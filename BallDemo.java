@@ -23,7 +23,8 @@ public class BallDemo
     }
 
     /**
-     * Simula el numero de bolas indicadas por parametro. Posicion,tamaño y color aleatorios.
+     * Simula el numero de bolas indicadas por parametro. Tamaño y color aleatorios. La posicion
+     * de inicio es aleatoria dentro del cuadrante superior izquierdo.
      */
     public void bounce(int bolas)
     {
@@ -40,7 +41,7 @@ public class BallDemo
         // lista las bolas con caracteristicas aleatorias
         for(int i=0;i<bolas;i++){
             Color color = new Color(aleatorio.nextInt(256),aleatorio.nextInt(256),aleatorio.nextInt(256));
-            listaBolas.add(new BouncingBall(aleatorio.nextInt(551), aleatorio.nextInt(400), aleatorio.nextInt(31)+20, color, ground, myCanvas));
+            listaBolas.add(new BouncingBall(aleatorio.nextInt(301), aleatorio.nextInt(251), aleatorio.nextInt(31)+10, color, ground, myCanvas));
         }
 
         // hace que se muevan
