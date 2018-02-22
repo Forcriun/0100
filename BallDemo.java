@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -22,7 +23,7 @@ public class BallDemo
     }
 
     /**
-     * Simulate two bouncing balls
+     * Simula el numero de bolas indicadas por parametro. Posicion,tamaño y color aleatorios.
      */
     public void bounce(int bolas)
     {
@@ -34,19 +35,21 @@ public class BallDemo
         myCanvas.drawLine(50, ground, 550, ground);
 
         ArrayList<BouncingBall> listaBolas = new ArrayList<>();
+        Random aleatorio = new Random();
 
-        // crate and show the balls
+        // lista las bolas con caracteristicas aleatorias
         for(int i=0;i<bolas;i++){
-            listaBolas.add(new BouncingBall(50+20*i, 50, 16, Color.BLUE, ground, myCanvas));
+            Color color = new Color(aleatorio.nextInt(256),aleatorio.nextInt(256),aleatorio.nextInt(256));
+            listaBolas.add(new BouncingBall(aleatorio.nextInt(551), aleatorio.nextInt(400), aleatorio.nextInt(31)+20, color, ground, myCanvas));
         }
 
-        // make them bounce
+        // hace que se muevan
         boolean finished =  false;
         while(!finished) {
             myCanvas.wait(50);           // small delay
             for(BouncingBall bola : listaBolas){
                 bola.move();
-                // stop once ball has travelled a certain distance on x axis
+                // para en cuanto una de las bolas sobrepasa el limite
                 if(bola.getXPosition() >= 550) {
                     finished = true;
                 }
